@@ -1,30 +1,14 @@
-# Inference
+# Fragmented
 
-A dispatcher in a similar vein to [Redux](https://github.com/reactjs/redux).
-
-## Why?
-
-To go hand in hand with [Reaction](https://github.com/djalbat/Reaction). It does away with Redux's centralised state, instead passing updates directly to listeners. It does this is by applying rules to actions and combining the results in pretty much the same way that Redux employs reducers.
-
-## Rewiring Redux
-
-There is now a series of complementary videos:
-
-**[Rewiring Redux](https://vimeo.com/album/4445954)**
-
-#### Errata
-
-- None as yet.
-
-## Installation
+Maps URL fragments to events and vice versa.
 
 With [npm](https://www.npmjs.com/):
 
-    npm install inference
+    npm install fragmented
 
 You can also clone the repository with [Git](https://git-scm.com/)...
 
-    git clone https://github.com/djalbat/Inference.git
+    git clone https://github.com/djalbat/Fragmented.git
 
 ...then install the necessary modules with npm from within the project's root directory:
 
@@ -32,14 +16,14 @@ You can also clone the repository with [Git](https://git-scm.com/)...
 
 You will need to do this if you want to look at the examples.
 
-## Examples
+## Example
 
-Launch the `examples.html` file in the project's root directory. There is one Inference example application as well as a Redux application, for comparison.
+Launch the `example.html` file in the project's root directory.
 
 ## Usage
 
 ```js
-var inference = require('inference');
+var fragmented = require('fragmented');
 ```
 
 ## Compiling from source

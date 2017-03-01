@@ -1,13 +1,13 @@
 {
-  "name": "urly",
+  "name": "fragmented",
   "author": "James Smith",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "MIT",
-  "homepage": "https://github.com/djalbat/URLy",
-  "description": "Maps URLs to actions and vice versa.",
+  "homepage": "https://github.com/djalbat/Fragmented",
+  "description": "Maps URL fragments to events and vice versa.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/djalbat/URLy"
+    "url": "https://github.com/djalbat/Fragmented"
   },
   "dependencies": {},
   "devDependencies": {
