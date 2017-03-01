@@ -1,7 +1,7 @@
 {
   "name": "fragmented",
   "author": "James Smith",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "license": "MIT",
   "homepage": "https://github.com/djalbat/Fragmented",
   "description": "Maps URL fragments to events and vice versa.",
@@ -21,13 +21,13 @@
   },
   "scripts": {
     "clean": "rm -rf ./lib",
-    "babel": "babel ./es6 --presets=es2015,react --plugins transform-react-jsx --out-dir=./lib",
-    "babel-debug": "babel ./es6 --presets=es2015,react --plugins transform-react-jsx --source-maps inline --out-dir=./lib",
-    "browserify:example": "browserify ./example/index.js --standalone example > ./example.js",
-    "browserify:example-debug": "browserify ./example/index.js --standalone example --debug > ./example.js",
+    "babel": "babel ./es6 --presets=es2015 --out-dir=./lib",
+    "babel-debug": "babel ./es6 --presets=es2015 --source-maps inline --out-dir=./lib",
+    "browserify:example": "browserify ./es6/example.js --standalone example > ./example.js",
+    "browserify:example-debug": "browserify ./es6/example.js --standalone example --debug > ./example.js",
     "build": "npm run clean && npm run babel && npm run browserify:example",
     "build-debug": "npm run clean && npm run babel-debug && npm run browserify:example-debug",
-    "watch": "npm run build && chokidar 'index.js' './example/index.js' './es6/**/*.js' -c 'npm run build'",
-    "watch-debug": "npm run build-debug && chokidar 'index.js' './example/index.js' './es6/**/*.js' -c 'npm run build-debug'"
+    "watch": "npm run build && chokidar 'index.js' './es6/**/*.js' -c 'npm run build'",
+    "watch-debug": "npm run build-debug && chokidar 'index.js' './es6/**/*.js' -c 'npm run build-debug'"
   }
 }

@@ -23,7 +23,31 @@ Launch the `example.html` file in the project's root directory.
 ## Usage
 
 ```js
-var fragmented = require('fragmented');
+require('fragmented');
+```
+
+To print the fragment to the console:
+
+```js
+console.log(fragment)
+```
+
+To set the fragment:
+
+```js
+fragment = 'test';
+```
+
+You can also register and unregister change handlers:
+
+```js
+  function fragmentChangeHandler(fragment) {
+    console.log(fragment)
+  }
+
+  fragment.onChange(fragmentChangeHandler);
+
+  fragment.offChange(fragmentChangeHandler);
 ```
 
 ## Compiling from source
