@@ -1,7 +1,7 @@
 {
   "name": "fragmented",
   "author": "James Smith",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "license": "MIT",
   "homepage": "https://github.com/djalbat/Fragmented",
   "description": "Maps URL fragments to events and vice versa.",
