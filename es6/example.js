@@ -7,7 +7,7 @@ function example() {
 
   fragment = 'test';
 
-  function fragmentChangeHandler(fragment) {
+  function fragmentChangeHandler() {
     console.log(fragment)
   }
 

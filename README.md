@@ -41,7 +41,7 @@ fragment = 'test';
 You can also register and unregister change handlers:
 
 ```js
-  function fragmentChangeHandler(fragment) {
+  function fragmentChangeHandler() {
     console.log(fragment)
   }
 

@@ -3,23 +3,15 @@
 (function() {
   const changeHandlers = [];
 
-  function fragmentFromHash() {
-    const hash = window.location.hash,
-          fragment = hash.substr(1);  ///
-
-    return fragment;
-  }
-
   window.onhashchange = function() {
-    const fragment = fragmentFromHash();
-
     changeHandlers.forEach(function(changeHandler) {
-      changeHandler(fragment);
+      changeHandler();
     })
   };
 
   function getFragment() {
-    const fragment = fragmentFromHash(),
+    const hash = window.location.hash,
+          fragment = hash.substr(1),  ///
           fragmentPrototype = Object.getPrototypeOf(fragment);
 
     fragmentPrototype.onChange = function(changeHandler) {
