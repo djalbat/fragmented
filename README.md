@@ -47,7 +47,7 @@ You can also register and unregister change handlers:
 
   fragment.onChange(fragmentChangeHandler);
 
-  fragment.offChange(fragmentChangeHandler);
+  // fragment.offChange(fragmentChangeHandler);
 ```
 
 ## Compiling from source
