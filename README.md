@@ -1,6 +1,6 @@
 # Fragmented
 
-Maps URL fragments to events and vice versa.
+Handles URL fragments.
 
 With [npm](https://www.npmjs.com/):
 
