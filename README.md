@@ -1,6 +1,6 @@
 # Fragmented
 
-Handles URL fragments.
+Relates to URL hash fragments.
 
 With [npm](https://www.npmjs.com/):
 
