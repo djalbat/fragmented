@@ -1,7 +1,7 @@
 'use strict';
 
 Object.defineProperty(window, 'fragment', {
-  get: function () {
+  get: function() {
     const fragment = window.location.hash.substr(1),  ///
           fragmentPrototype = Object.getPrototypeOf(fragment);
 
@@ -16,7 +16,7 @@ Object.defineProperty(window, 'fragment', {
     return fragment;
   },
 
-  set: function (fragment) {
+  set: function(fragment) {
     window.location.hash = fragment;  ///
   }
 });
