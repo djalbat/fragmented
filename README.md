@@ -2,6 +2,12 @@
 
 Relates to URL hash fragments.
 
+Fragmented allows your application to effect and be affected by the hash fragment portion of the URL in the browser's address bar. The hash fragment is invisible to the server whilst being noticed by browser, with it's changes being added to the browser's history. For this reason Fragmented's functionality is useful to single page applications that wan't the back and forward buttons to work for them, and for deep linking.
+
+All that Fragmented does is expose a global `fragmented` variable, the value of which the application can gan or set, and which also has `onChange` and `offChange` properties so that handlers can be registered and unregistered.
+
+Installation
+
 With [npm](https://www.npmjs.com/):
 
     npm install fragmented
@@ -38,16 +44,16 @@ To set the fragment:
 fragment = 'test';
 ```
 
-You can also register and unregister change handlers:
+Registering and unregistering change handlers:
 
 ```js
-  function fragmentChangeHandler() {
+function fragmentChangeHandler() {
     console.log(fragment)
-  }
+}
 
-  fragment.onChange(fragmentChangeHandler);
+fragment.onChange(fragmentChangeHandler);
 
-  // fragment.offChange(fragmentChangeHandler);
+// fragment.offChange(fragmentChangeHandler);
 ```
 
 ## Compiling from source
