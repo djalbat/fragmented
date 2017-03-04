@@ -2,7 +2,7 @@
 
 Relates to URL hash fragments.
 
-Fragmented allows your application to effect and be affected by the hash fragment of the URL in the browser's address bar. The hash fragment is invisible to the server whilst changes to the fragment are included in the browser's history. For this reasonn fragments are useful to single page applications that need the back and forward buttons to work for them, and for deep linking.
+Fragmented allows your application to effect and be affected by the hash fragment of the URL in the browser's address bar. Changes to the fragment are invisible to the server but are included in the browser's history. For this reasonn fragments are useful to single page applications that need the back and forward buttons to work for them, and for deep linking.
 
 All that Fragmented does is expose a global `fragmented` variable, the value of which the application can get or set, and which also has `onChange` and `offChange` properties so that handlers can be registered and unregistered.
 
