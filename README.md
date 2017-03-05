@@ -56,6 +56,8 @@ fragment.onChange(fragmentChangeHandler);
 // fragment.offChange(fragmentChangeHandler);
 ```
 
+Note that change handlers will not be called when the `fragment` variable is set, only when the actual fragment is changed. 
+
 ## Compiling from source
 
 Automation is thanks to [npm scripts](https://docs.npmjs.com/misc/scripts), have a look at the `package.json` file. The pertinent commands are:
