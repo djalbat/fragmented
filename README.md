@@ -4,7 +4,7 @@ Relates to URL hash fragments.
 
 Fragmented allows your application to affect and be affected by the hash fragment of the URL in the browser's address bar. Changes to the fragment are invisible to the server whilst being included in the browser's history. For this reasonn fragments are useful to single page applications that need the back and forward buttons to work for them, and for deep linking.
 
-All that Fragmented does is [create a global `fragmented` variable](https://github.com/djalbat/Fragmented/blob/master/es6/fragmented.js), the value of which the application can get or set, and which also has `onChange` and `offChange` properties so that handlers can be registered and unregistered.
+All that Fragmented does is create a global [`fragmented`](https://github.com/djalbat/Fragmented/blob/master/es6/fragmented.js) variable, the value of which the application can get or set, and which also has `onChange` and `offChange` properties so that handlers can be registered and unregistered.
 
 ## Installation
 
