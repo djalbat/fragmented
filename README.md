@@ -56,7 +56,7 @@ fragment.onChange(fragmentChangeHandler);
 // fragment.offChange(fragmentChangeHandler);
 ```
 
-Note that change handlers will not be called when the `fragment` variable is set, only when the actual fragment is changed. 
+Note that change handlers will be called not only when the actual fragment is changed in the browser's address bar, but also when the `fragment` variable is set. 
 
 ## Compiling from source
 
