@@ -2,21 +2,26 @@
 
 Object.defineProperty(window, 'fragment', {
   get: function() {
-    const fragment = window.location.hash.substr(1),  ///
-          fragmentPrototype = Object.getPrototypeOf(fragment);
+    const hash = window.location.hash.substr(1),  ///
+          fragment = new String(hash);  ///
 
-    fragmentPrototype.onChange = function(changeHandler) {
-      window.addEventListener('hashchange', changeHandler);
-    };
-
-    fragmentPrototype.offChange = function(changeHandler) {
-      window.removeEventListener('hashchange', changeHandler);
-    };
+    Object.assign(fragment, {
+      onChange: onChange,
+      offChange: offChange
+    });
 
     return fragment;
   },
 
-  set: function(fragment) {
-    window.location.hash = fragment;  ///
+  set: function(hash) {
+    window.location.hash = hash;
   }
 });
+
+function onChange(changeHandler) {
+  window.addEventListener('hashchange', changeHandler);
+}
+
+function offChange(changeHandler) {
+  window.removeEventListener('hashchange', changeHandler);
+}

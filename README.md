@@ -58,6 +58,8 @@ fragment.onChange(fragmentChangeHandler);
 
 Note that since registered change handlers are called when the actual fragment in the browser's address bar is changed, they will be called when the `fragment` variable is set.
 
+Also note that the fragment is an instance of the built-in `String` object, in order that properties on it can be defined, so use `==` rather than `===` if equating it to a string.
+
 ## Compiling from source
 
 Automation is thanks to [npm scripts](https://docs.npmjs.com/misc/scripts), have a look at the `package.json` file. The pertinent commands are:
