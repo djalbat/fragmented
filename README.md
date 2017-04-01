@@ -32,10 +32,10 @@ Launch the `example.html` file in the project's root directory.
 require('fragmented');
 ```
 
-To print the fragment to the console:
+To assign the current value of the fragment to a variable:
 
 ```js
-console.log(fragment)
+var pageFragment = fragment;
 ```
 
 To set the fragment:
@@ -48,7 +48,7 @@ Registering and unregistering change handlers:
 
 ```js
 function fragmentChangeHandler() {
-    console.log(fragment)
+  console.log(fragment)
 }
 
 fragment.onChange(fragmentChangeHandler);
