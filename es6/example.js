@@ -1,19 +1,21 @@
 'use strict';
 
-const fragmented = require('./fragmented');
+require('./fragmented');
+
+const { onFragmentChange, offFragmentChange } = fragment;
 
 function example() {
+  onFragmentChange(fragmentChangeHandler);
+
   console.log(fragment)
 
   fragment = 'test';
 
-  function fragmentChangeHandler() {
-    console.log(fragment)
-  }
-
-  fragment.onChange(fragmentChangeHandler);
-
-  // fragment.offChange(fragmentChangeHandler);
+  // offFragmentChange(fragmentChangeHandler);
 }
 
 module.exports = example;
+
+function fragmentChangeHandler() {
+  console.log(fragment)
+}
