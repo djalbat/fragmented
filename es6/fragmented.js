@@ -8,15 +8,15 @@ Object.defineProperty(window, 'fragment', {
   },
 
   set: function(fragment) {
-    const furtively = false;
+    const silently = false;
 
-    setFragment(fragment, furtively);
+    setFragment(fragment, silently);
   }
 });
 
-window.addEventListener('hashchange', hashChangeHandler);
+window.addEventListener('hashchange', hashChangeListener);
 
-const changeHandlers = [];
+const fragmentChangeHandlers = [];
 
 function getFragment() {
   const hash = window.location.hash.substr(1),  ///
@@ -32,37 +32,39 @@ function getFragment() {
   return fragment;
 }
 
-function setFragment(fragment, furtively = true) {
+function setFragment(fragment, silently = true) {
   const hash = fragment;  ///
 
-  if (furtively) {
-    window.removeEventListener('hashchange', hashChangeHandler);
+  if (silently) {
+    window.removeEventListener('hashchange', hashChangeListener);
   }
 
   window.location.hash = hash;
 
-  if (furtively) {
-    window.addEventListener('hashchange', hashChangeHandler);
+  if (silently) {
+    setTimeout(function() {
+      window.addEventListener('hashchange', hashChangeListener);
+    }, 0);
   }
 }
 
-function onFragmentChange(changeHandler) {
-  changeHandlers.push(changeHandler);
+function onFragmentChange(fragmentChangeHandler) {
+  fragmentChangeHandlers.push(fragmentChangeHandler);
 }
 
-function offFragmentChange(changeHandler) {
-  const index = changeHandlers.indexOf(changeHandler);
+function offFragmentChange(fragmentChangeHandler) {
+  const index = fragmentChangeHandlers.indexOf(fragmentChangeHandler);
 
   if (index > -1) {
     const start = index,  ///
           deleteCount = 1;
 
-    changeHandlers.splice(start, deleteCount);
+    fragmentChangeHandlers.splice(start, deleteCount);
   }
 }
 
-function hashChangeHandler() {
-  changeHandlers.forEach(function(changeHandler) {
-    changeHandler();
+function hashChangeListener() {
+  fragmentChangeHandlers.forEach(function(fragmentChangeHandler) {
+    fragmentChangeHandler();
   });
 }
