@@ -23,10 +23,10 @@ function getFragment() {
         fragment = new String(hash);  ///
 
   Object.assign(fragment, {
-    getFragment: getFragment,
-    setFragment: setFragment,
-    onFragmentChange: onFragmentChange,
-    offFragmentChange: offFragmentChange
+    getFragment,
+    setFragment,
+    onFragmentChange,
+    offFragmentChange
   });
 
   return fragment;
