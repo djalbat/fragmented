@@ -64,7 +64,10 @@ function offFragmentChange(fragmentChangeHandler) {
 }
 
 function hashChangeListener() {
+  const hash = window.location.hash.substr(1),  ///
+        fragment = hash;  ///
+
   fragmentChangeHandlers.forEach(function(fragmentChangeHandler) {
-    fragmentChangeHandler();
+    fragmentChangeHandler(fragment);
   });
 }
