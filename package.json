@@ -1,13 +1,13 @@
 {
   "name": "fragmented",
   "author": "James Smith",
-  "version": "2.0.6",
+  "version": "2.0.7",
   "license": "MIT",
-  "homepage": "https://github.com/djalbat/Fragmented",
+  "homepage": "https://github.com/djalbat/fragmented",
   "description": "Relates to URL hash fragments.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/djalbat/Fragmented"
+    "url": "https://github.com/djalbat/fragmented"
   },
   "dependencies": {},
   "devDependencies": {
