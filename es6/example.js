@@ -4,17 +4,13 @@ require('./fragmented');
 
 const { onFragmentChange, offFragmentChange } = fragment;
 
-function example() {
-  onFragmentChange(fragmentChangeHandler);
+onFragmentChange(fragmentChangeHandler);
 
-  console.log(fragment)
+console.log(fragment)
 
-  fragment = 'test';
+fragment = 'test';
 
-  // offFragmentChange(fragmentChangeHandler);
-}
-
-module.exports = example;
+// offFragmentChange(fragmentChangeHandler);
 
 function fragmentChangeHandler() {
   console.log(fragment)
