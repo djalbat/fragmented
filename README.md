@@ -24,25 +24,27 @@ You will need to do this if you want to look at the example.
 
 ## Usage
 
-```js
-require('fragmented');
+```
+import "fragmented";
+
+...
 ```
 
 To assign the current value of the fragment to a variable:
 
-```js
+```
 const pageFragment = fragment;
 ```
 
 To set the fragment:
 
-```js
-fragment = 'test';
+```
+fragment = "test";
 ```
 
 Registering and un-registering change handlers:
 
-```js
+```
 const { onFragmentChange, offFragmentChange } = fragment;
 
 function fragmentChangeHandler() {
@@ -56,15 +58,15 @@ onFragmentChange(fragmentChangeHandler);
 
 Note that change handlers are invoked whenever the `fragment` variable is set. If you do not want this behaviour, in other words you want to be able to change the fragment in the address bar without your change handlers being invoked, you can to this with an additional `setFragment()` function as follows:
 
-```js
+```
 const { setFragment } = fragment;
 
-setFragment('test'); // change handlers won't be invoked
+setFragment("test"); // change handlers won't be invoked
 ```
 
 Also note that the `fragment` variable is an instance of the `String` object, rather than a string primitive, in order that properties on it can be defined. So use `==` rather than `===` if equating it to a string primitive. Finally, note that if you use a `switch` statement, which uses strict equality, you will need to explicitly coerce the `fragment` variable to a string primitive before passing it in.
 
-Finally, if you do not like a 'global' `fragment` variable floating around, you can of course refer to it as `window.fragment`.
+Finally, if you do not like the thought of a global `fragment` variable, you can of course refer to it as `window.fragment`.
 
 ## Example
 

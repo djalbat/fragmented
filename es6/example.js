@@ -1,6 +1,6 @@
 "use strict";
 
-require("./fragmented");
+import "./fragmented";
 
 const { onFragmentChange, offFragmentChange } = fragment;
 
