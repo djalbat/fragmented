@@ -1,6 +1,6 @@
-'use strict';
+"use strict";
 
-require('./fragmented');
+require("./fragmented");
 
 const { onFragmentChange, offFragmentChange } = fragment;
 
@@ -8,7 +8,7 @@ onFragmentChange(fragmentChangeHandler);
 
 console.log(fragment)
 
-fragment = 'test';
+fragment = "test";
 
 // offFragmentChange(fragmentChangeHandler);
 

@@ -1,6 +1,6 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(window, 'fragment', {
+Object.defineProperty(window, "fragment", {
   get: function() {
     const fragment = getFragment();
 
@@ -14,7 +14,7 @@ Object.defineProperty(window, 'fragment', {
   }
 });
 
-window.addEventListener('hashchange', hashChangeListener);
+window.addEventListener("hashchange", hashChangeListener);
 
 const fragmentChangeHandlers = [];
 
@@ -36,14 +36,14 @@ function setFragment(fragment, silently = true) {
   const hash = fragment;  ///
 
   if (silently) {
-    window.removeEventListener('hashchange', hashChangeListener);
+    window.removeEventListener("hashchange", hashChangeListener);
   }
 
   window.location.hash = hash;
 
   if (silently) {
     setTimeout(function() {
-      window.addEventListener('hashchange', hashChangeListener);
+      window.addEventListener("hashchange", hashChangeListener);
     }, 0);
   }
 }
