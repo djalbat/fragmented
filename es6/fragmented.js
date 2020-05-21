@@ -42,7 +42,7 @@ function setFragment(fragment, silently = true) {
   window.location.hash = hash;
 
   if (silently) {
-    setTimeout(function() {
+    setTimeout(() => {
       window.addEventListener("hashchange", hashChangeListener);
     }, 0);
   }
@@ -67,7 +67,7 @@ function hashChangeListener() {
   const hash = window.location.hash.substr(1),  ///
         fragment = hash;  ///
 
-  fragmentChangeHandlers.forEach(function(fragmentChangeHandler) {
+  fragmentChangeHandlers.forEach((fragmentChangeHandler) => {
     fragmentChangeHandler(fragment);
   });
 }
