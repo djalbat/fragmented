@@ -24,6 +24,8 @@ You will need to do this if you want to look at the example.
 
 ## Usage
 
+There are no objects exported as such, you only need to import the package:
+
 ```
 import "fragmented";
 
