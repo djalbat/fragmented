@@ -28,8 +28,6 @@ There are no objects exported as such, you only need to import the package:
 
 ```
 import "fragmented";
-
-...
 ```
 
 To assign the current value of the fragment to a variable:
