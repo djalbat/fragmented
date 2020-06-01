@@ -72,7 +72,7 @@ Finally, if you do not like the thought of a global `fragment` variable, you can
 
 Launch the `example.html` file in the project's root directory.
 
-## Compiling from source
+## Building
 
 Automation is thanks to [npm scripts](https://docs.npmjs.com/misc/scripts), have a look at the `package.json` file. The pertinent commands are:
 
