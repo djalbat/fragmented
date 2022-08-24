@@ -44,7 +44,7 @@ function setFragment(fragment, silently = true) {
   if (silently) {
     setTimeout(() => {
       window.addEventListener("hashchange", hashChangeListener);
-    }, 0);
+    }, 1);
   }
 }
 
