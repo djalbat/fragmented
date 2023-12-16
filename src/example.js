@@ -1,6 +1,6 @@
 "use strict";
 
-import "./fragmented";
+import "./index"; ///
 
 const { onFragmentChange, offFragmentChange } = fragment;
 

@@ -22,6 +22,24 @@ You can also clone the repository with [Git](https://git-scm.com/)...
 
 You will need to do this if you want to look at the example.
 
+## Example
+
+There is a small development server that can be run from within the project's directory with the following command:
+
+    npm start
+
+The example will then be available at the following URL:
+
+http://localhost:8888
+
+The source for the example can be found in the `src/example.js` file and corresponding `src/example` folder. You are encouraged to try the example whilst reading what follows. You can rebuild it on the fly with the following command:
+
+    npm run watch-debug
+
+The development server will reload the page whenever you make changes.
+
+One last thing to bear in mind is that this package is included by way of a relative rather than a package import. If you are importing it into your own application, however, you should use the standard package import.
+
 ## Usage
 
 There are no objects exported as such, you only need to import the package:
@@ -67,10 +85,6 @@ setFragment("test"); // change handlers won't be invoked
 Also note that the `fragment` variable is an instance of the `String` object, rather than a string primitive, in order that properties on it can be defined. So use `==` rather than `===` if equating it to a string primitive. Finally, note that if you use a `switch` statement, which uses strict equality, you will need to explicitly coerce the `fragment` variable to a string primitive before passing it in.
 
 Finally, if you do not like the thought of a global `fragment` variable, you can of course refer to it as `window.fragment`.
-
-## Example
-
-Launch the `example.html` file in the project's root directory.
 
 ## Building
 
