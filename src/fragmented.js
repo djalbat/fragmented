@@ -3,26 +3,7 @@
 import { FRAGMENT } from "./constants";
 import { HASHCHANGE_EVENT_TYPE } from "./eventTypes";
 
-Object.defineProperty(window, FRAGMENT, {
-  get: function() {
-    const fragment = getFragment();
-
-    return fragment;
-  },
-
-  set: function(fragment) {
-    const silently = false;
-
-    setFragment(fragment, silently);
-  }
-});
-
-const eventType = HASHCHANGE_EVENT_TYPE,
-      fragmentChangeHandlers = [];
-
-window.addEventListener(eventType, hashChangeListener);
-
-function getFragment() {
+export function getFragment() {
   const hash = getHash(),
         fragment = new String(hash);  ///
 
@@ -36,7 +17,7 @@ function getFragment() {
   return fragment;
 }
 
-function setFragment(fragment, silently = true) {
+export function setFragment(fragment, silently = true) {
   const hash = fragment;  ///
 
   if (silently) {
@@ -66,6 +47,25 @@ export function offFragmentChange(fragmentChangeHandler) {
     fragmentChangeHandlers.splice(start, deleteCount);
   }
 }
+
+Object.defineProperty(window, FRAGMENT, {
+  get: function() {
+    const fragment = getFragment();
+
+    return fragment;
+  },
+
+  set: function(fragment) {
+    const silently = false;
+
+    setFragment(fragment, silently);
+  }
+});
+
+const eventType = HASHCHANGE_EVENT_TYPE,
+      fragmentChangeHandlers = [];
+
+window.addEventListener(eventType, hashChangeListener);
 
 function hashChangeListener(event) {
   const hash = getHash(),

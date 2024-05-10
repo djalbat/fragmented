@@ -2,5 +2,5 @@
 
 import "./fragmented";
 
-export { onFragmentChange, offFragmentChange } from "./fragmented";
+export { setFragment, getFragment, onFragmentChange, offFragmentChange } from "./fragmented";
 
