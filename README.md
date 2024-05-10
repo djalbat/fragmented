@@ -84,7 +84,15 @@ setFragment("test"); // change handlers won't be invoked
 
 Also note that the `fragment` variable is an instance of the `String` object, rather than a string primitive, in order that properties on it can be defined. So use `==` rather than `===` if equating it to a string primitive. Finally, note that if you use a `switch` statement, which uses strict equality, you will need to explicitly coerce the `fragment` variable to a string primitive before passing it in.
 
-Finally, if you do not like the thought of a global `fragment` variable, you can of course refer to it as `window.fragment`.
+You can import these functions more conventionally if you think that destructuring the global `fragment` variable is too cute: 
+
+```
+import { getFragment, setFragment, onFragmentChange, offFragmentChange } from "fragmented";
+
+...
+```
+
+Finally if you do not like the thought of a global `fragment` variable then you can refer to it as `window.fragment`.
 
 ## Building
 
