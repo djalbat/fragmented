@@ -67,11 +67,11 @@ export function offFragmentChange(fragmentChangeHandler) {
   }
 }
 
-function hashChangeListener() {
+function hashChangeListener(event) {
   const hash = window.location.hash.substr(1),  ///
         fragment = hash;  ///
 
   fragmentChangeHandlers.forEach((fragmentChangeHandler) => {
-    fragmentChangeHandler(fragment);
+    fragmentChangeHandler(event, fragment);
   });
 }
