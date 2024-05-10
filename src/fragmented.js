@@ -1,6 +1,9 @@
 "use strict";
 
-Object.defineProperty(window, "fragment", {
+import { FRAGMENT } from "./constants";
+import { HASHCHANGE_EVENT_TYPE } from "./eventTypes";
+
+Object.defineProperty(window, FRAGMENT, {
   get: function() {
     const fragment = getFragment();
 
@@ -14,9 +17,10 @@ Object.defineProperty(window, "fragment", {
   }
 });
 
-window.addEventListener("hashchange", hashChangeListener);
+const eventType = HASHCHANGE_EVENT_TYPE,
+      fragmentChangeHandlers = [];
 
-const fragmentChangeHandlers = [];
+window.addEventListener(eventType, hashChangeListener);
 
 function getFragment() {
   const hash = window.location.hash.substr(1),  ///
@@ -36,23 +40,23 @@ function setFragment(fragment, silently = true) {
   const hash = fragment;  ///
 
   if (silently) {
-    window.removeEventListener("hashchange", hashChangeListener);
+    window.removeEventListener(eventType, hashChangeListener);
   }
 
   window.location.hash = hash;
 
   if (silently) {
     setTimeout(() => {
-      window.addEventListener("hashchange", hashChangeListener);
+      window.addEventListener(eventType, hashChangeListener);
     }, 0);
   }
 }
 
-function onFragmentChange(fragmentChangeHandler) {
+export function onFragmentChange(fragmentChangeHandler) {
   fragmentChangeHandlers.push(fragmentChangeHandler);
 }
 
-function offFragmentChange(fragmentChangeHandler) {
+export function offFragmentChange(fragmentChangeHandler) {
   const index = fragmentChangeHandlers.indexOf(fragmentChangeHandler);
 
   if (index > -1) {
