@@ -23,7 +23,7 @@ const eventType = HASHCHANGE_EVENT_TYPE,
 window.addEventListener(eventType, hashChangeListener);
 
 function getFragment() {
-  const hash = window.location.hash.substr(1),  ///
+  const hash = getHash(),
         fragment = new String(hash);  ///
 
   Object.assign(fragment, {
@@ -68,10 +68,22 @@ export function offFragmentChange(fragmentChangeHandler) {
 }
 
 function hashChangeListener(event) {
-  const hash = window.location.hash.substr(1),  ///
+  const hash = getHash(),
         fragment = hash;  ///
 
   fragmentChangeHandlers.forEach((fragmentChangeHandler) => {
     fragmentChangeHandler(event, fragment);
   });
+}
+
+function getHash() {
+  const { location } = window;
+
+  let { hash } = location;
+
+  const start = 1;
+
+  hash = hash.substring(start);
+
+  return hash;
 }
