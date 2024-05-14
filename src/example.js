@@ -2,16 +2,20 @@
 
 import "./index"; ///
 
-const { onFragmentChange, offFragmentChange } = fragment;
+const { resetFragment, onFragmentChange } = fragment;
 
 onFragmentChange(fragmentChangeHandler);
 
-console.log(fragment)
+console.log(`Initially: '${fragment}'.`)
 
 fragment = "test";
 
-// offFragmentChange(fragmentChangeHandler);
-
 function fragmentChangeHandler() {
-  console.log(fragment)
+  console.log(`Changed to '${fragment}'.`)
 }
+
+window.addEventListener("click", () => {
+  const silently = false;
+
+  resetFragment(silently);
+});

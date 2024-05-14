@@ -73,7 +73,9 @@ const fragmentChangeHandler = () {
 
 onFragmentChange(fragmentChangeHandler);
 
-// offFragmentChange(fragmentChangeHandler);
+...
+
+offFragmentChange(fragmentChangeHandler);
 ```
 
 Note that handlers are invoked whenever the `fragment` variable is set. If you do not want this behaviour, in other words you want to be able to change the fragment in the address bar without your handlers being invoked, you can to this with an additional `setFragment()` function as follows:

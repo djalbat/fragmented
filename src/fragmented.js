@@ -35,9 +35,9 @@ export function setFragment(fragment, silently = true) {
 }
 
 export function resetFragment(silently = true) {
-  if (silently) {
-    window.removeEventListener(eventType, hashChangeListener);
-  }
+  const fragment = EMPTY_STRING;
+
+  setFragment(fragment, silently);
 
   let { href } = location;
 
@@ -49,22 +49,16 @@ export function resetFragment(silently = true) {
 
     href = href.substring(start, end); ///
 
-    history.pushState({}, EMPTY_STRING, href);
-  }
-
-  if (silently) {
-    setTimeout(() => {
-      window.addEventListener(eventType, hashChangeListener);
-    }, 0);
+    history.replaceState({}, EMPTY_STRING, href);
   }
 }
 
-export function onFragmentChange(fragmentChangeHandler, element = this) {
-  addFragmentChangeEventListener(fragmentChangeHandler, element);
+export function onFragmentChange(fragmentChangeHandler) {
+  addFragmentChangeEventListener(fragmentChangeHandler);
 }
 
-export function offFragmentChange(fragmentChangeHandler, element = this) {
-  removeFragmentChangeEventListener(fragmentChangeHandler, element);
+export function offFragmentChange(fragmentChangeHandler) {
+  removeFragmentChangeEventListener(fragmentChangeHandler);
 }
 
 Object.defineProperty(globalThis, FRAGMENT, {
@@ -82,7 +76,7 @@ Object.defineProperty(globalThis, FRAGMENT, {
 });
 
 const eventType = HASHCHANGE_EVENT_TYPE,
-      fragmentChangeEventListeners = [];
+      fragmentChangeHandlers = [];
 
 window.addEventListener(eventType, hashChangeListener);
 
@@ -107,51 +101,23 @@ function hashChangeListener(event) {
 }
 
 function callFragmentChangeHandlers(event, element, fragment) {
-  fragmentChangeEventListeners.forEach((fragmentChangeEventListener) => {
-    const { fragmentChangeHandler, element: fragmentChangeHandlerElement } = fragmentChangeEventListener; ///
-
-    fragmentChangeHandler.call(fragmentChangeHandlerElement, event, element, fragment);
+  fragmentChangeHandlers.forEach((fragmentChangeHandler) => {
+    fragmentChangeHandler(event, element, fragment);
   });
 }
 
-function addFragmentChangeEventListener(fragmentChangeHandler, element) {
-  const fragmentChangeEventListener = createFragmentChangeEventListener(fragmentChangeHandler, element);
+function addFragmentChangeEventListener(fragmentChangeHandler) {
+  fragmentChangeHandlers.push(fragmentChangeHandler);
 
-  fragmentChangeEventListeners.push(fragmentChangeEventListener);
-
-  return fragmentChangeEventListener;
+  return fragmentChangeHandler;
 }
 
-function removeFragmentChangeEventListener(fragmentChangeHandler, element) {
-  const fragmentChangeEventListener = findFragmentChangeEventListener(fragmentChangeHandler, element),
-        index = fragmentChangeEventListeners.indexOf(fragmentChangeEventListener),
+function removeFragmentChangeEventListener(fragmentChangeHandler) {
+  const index = fragmentChangeHandlers.indexOf(fragmentChangeHandler),
         start = index,  ///
         deleteCount = 1;
 
-  fragmentChangeEventListeners.splice(start, deleteCount);
+  fragmentChangeHandlers.splice(start, deleteCount);
 
-  return fragmentChangeEventListener;
-}
-
-function createFragmentChangeEventListener(fragmentChangeHandler, element) {
-  let fragmentChangeEventListener;
-
-  fragmentChangeEventListener = () => {}; ///
-
-  Object.assign(fragmentChangeEventListener, {
-    element,
-    fragmentChangeHandler
-  });
-
-  return fragmentChangeEventListener;
-}
-
-function findFragmentChangeEventListener(fragmentChangeHandler, element) {
-  const fragmentChangeEventListener = fragmentChangeEventListeners.find((fragmentChangeEventListener) => {
-    if ((fragmentChangeEventListener.element === element) && (fragmentChangeEventListener.fragmentChangeHandler === fragmentChangeHandler)) {
-      return true;
-    }
-  });
-
-  return fragmentChangeEventListener;
+  return fragmentChangeHandler;
 }
