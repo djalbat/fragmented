@@ -2,9 +2,9 @@
 
 Relates to URL hash fragments.
 
-Fragmented allows your application to affect and be affected by the hash fragment of the URL in the browser's address bar. Changes to the fragment are invisible to the server whilst being included in the browser's history. For this reason fragments are useful to single page applications that need the back and forward buttons to work for them, and for deep linking.
+Fragmented allows your application to affect and be affected by the hash fragment of the URL in the browser's address bar. Changes to the fragment are invisible to the server whilst being included in the browser's history. For this reason fragments are useful to single page applications that need the back and forward buttons to work for them without triggering Ajax requests and the like.
 
-All that Fragmented does is create a global [`fragment`](https://github.com/djalbat/Fragmented/blob/master/es6/fragmented.js) variable, the value of which the application can get or set, and which also has `onFragmentChange` and `offFragmentChange` properties so that handlers can be registered and unregistered.
+Fragmented provides a global [`fragment`](https://github.com/djalbat/Fragmented/blob/master/es6/fragmented.js) variable which corresponds to the aforementioned hash fragment in the browser's address bar and the value of which the application can get or set. It also provides `onFragmentChange` and `offFragmentChange` functions so that handlers can be registered and unregistered.
 
 ## Installation
 
@@ -42,7 +42,7 @@ One last thing to bear in mind is that this package is included by way of a rela
 
 ## Usage
 
-There are no objects exported as such, you only need to import the package:
+In order to make use of the global `fragmented` variable you only need to import the package:
 
 ```
 import "fragmented";
@@ -60,12 +60,14 @@ To set the fragment:
 fragment = "test";
 ```
 
-Registering and un-registering change handlers:
+When you set the fragment like this any handlers will be called. 
+
+To register and unregister handlers:
 
 ```
 const { onFragmentChange, offFragmentChange } = fragment;
 
-function fragmentChangeHandler() {
+const fragmentChangeHandler = () {
   console.log(fragment)
 }
 
@@ -74,25 +76,25 @@ onFragmentChange(fragmentChangeHandler);
 // offFragmentChange(fragmentChangeHandler);
 ```
 
-Note that change handlers are invoked whenever the `fragment` variable is set. If you do not want this behaviour, in other words you want to be able to change the fragment in the address bar without your change handlers being invoked, you can to this with an additional `setFragment()` function as follows:
+Note that handlers are invoked whenever the `fragment` variable is set. If you do not want this behaviour, in other words you want to be able to change the fragment in the address bar without your handlers being invoked, you can to this with an additional `setFragment()` function as follows:
 
 ```
 const { setFragment } = fragment;
 
-setFragment("test"); // change handlers won't be invoked
+setFragment("test"); // handlers won't be invoked
 ```
 
-Also note that the `fragment` variable is an instance of the `String` object, rather than a string primitive, in order that properties on it can be defined. So use `==` rather than `===` if equating it to a string primitive. Finally, note that if you use a `switch` statement, which uses strict equality, you will need to explicitly coerce the `fragment` variable to a string primitive before passing it in.
+Also note that the `fragment` variable is an instance of the `String` object, rather than a string primitive, in order that properties on it can be defined. So use `==` rather than `===` if equating it to a string primitive. And note that if you use a `switch` statement, which uses strict equality, you will need to explicitly coerce the `fragment` variable to a string primitive before passing it in.
 
-You can import these functions more conventionally if you think that destructuring the global `fragment` variable is too cute: 
+By the way, you can import these functions more conventionally if you think that destructuring the global `fragment` variable is a bit too cute: 
 
 ```
-import { getFragment, setFragment, onFragmentChange, offFragmentChange } from "fragmented";
+import { getFragment, setFragment, resetFragment, onFragmentChange, offFragmentChange } from "fragmented";
 
 ...
 ```
 
-Finally if you do not like the thought of a global `fragment` variable then you can refer to it as `window.fragment`.
+Finally, the `resetFrageent()` function does as its name suggests, essentially removing the fragment altogether.
 
 ## Building
 
