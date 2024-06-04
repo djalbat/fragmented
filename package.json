@@ -1,7 +1,7 @@
 {
   "name": "fragmented",
   "author": "James Smith",
-  "version": "3.1.7",
+  "version": "3.1.8",
   "license": "MIT, Anti-996",
   "homepage": "https://github.com/djalbat/fragmented",
   "description": "Relates to URL hash fragments.",
@@ -13,7 +13,7 @@
     "@swc/core": "^1.5.6",
     "esbuild": "^0.9.6",
     "express": "^4.17.1",
-    "lively-cli": "^2.0.52",
+    "lively-cli": "^2.0.65",
     "watchful-cli": "^1.7.44"
   },
   "scripts": {
