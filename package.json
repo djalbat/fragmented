@@ -1,7 +1,7 @@
 {
   "name": "fragmented",
   "author": "James Smith",
-  "version": "3.1.18",
+  "version": "3.1.19",
   "license": "MIT, Anti-996",
   "homepage": "https://github.com/djalbat/fragmented",
   "description": "Relates to URL hash fragments.",
@@ -28,5 +28,9 @@
     "watch": "npm run clean && npm run batch && npm run incremental",
     "watch-debug": "npm run clean && npm run batch-debug && npm run incremental-debug"
   },
+  "files": [
+    "src",
+    "lib"
+  ],
   "main": "./lib/index.js"
 }
