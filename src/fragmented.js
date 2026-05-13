@@ -28,9 +28,9 @@ export function setFragment(fragment, silently = true) {
   window.location.hash = hash;
 
   if (silently) {
-    setTimeout(() => {
+    defer(() => {
       window.addEventListener(eventType, hashChangeListener);
-    }, 0);
+    });
   }
 }
 
@@ -120,4 +120,8 @@ function removeFragmentChangeEventListener(fragmentChangeHandler) {
   fragmentChangeHandlers.splice(start, deleteCount);
 
   return fragmentChangeHandler;
+}
+
+function defer(func) {
+  setTimeout(func, 0);
 }
